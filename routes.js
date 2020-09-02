@@ -9,8 +9,8 @@ router.get('/search', (req, res) => {
   const { dueDateStart, dueDateEnd, isComplete } = req.query;
   const tasks = dataStore.filter((task) => {
     const { dueDate } = task;
-    const taskDueDateBeforeStart = dueDate.valueOf() < new Date(dueDateStart).valueOf();
-    const taskDueDateAfterEnd = dueDate.valueOf() > new Date(dueDateEnd).valueOf();
+    const taskDueDateBeforeStart = dueDateStart && dueDate.valueOf() < new Date(dueDateStart).valueOf();
+    const taskDueDateAfterEnd = dueDateEnd && dueDate.valueOf() > new Date(dueDateEnd).valueOf();
     if (task.deletedAt) {
       return false;
     }
