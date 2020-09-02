@@ -3,11 +3,9 @@ const cors = require('cors');
 
 const { whitelist } = require('./config');
 
-const corsMiddleware = cors({
-  origin: whitelist
-});
-
 module.exports = [
-  corsMiddleware,
+  cors({
+    origin: whitelist
+  }),
   express.json(),
 ];

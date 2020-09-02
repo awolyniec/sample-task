@@ -37,7 +37,7 @@ router.post('/create', (req, res) => {
     _id: `task${counter++}`,
     name,
     description,
-    dueDate: new Date(dueDate),
+    dueDate: dueDate ? new Date(dueDate) : null,
     createdAt: new Date()
   };
   dataStore.push(newTask);
